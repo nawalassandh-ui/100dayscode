@@ -1,41 +1,29 @@
-// Q145: Return a structure containing top student's details from a function.
+// Q146: Create Employee structure with nested Date structure for joining date and print details.
 
 #include<stdio.h>
 
-struct students{
-    char name[50];
-    int roll;
-    float marks;
+struct Date{
+    int day, month, year;
 };
 
-struct students top_student(struct students stu[], int n){
-    struct students top = stu[0];
-    for(int i=0; i<n; i+=1){
-        if(stu[i].marks > top.marks){
-            top = stu[i];
-        }
-    }
-    return top;
-}
+struct employee{
+    char name[50];
+    int id;
+    struct Date j_d;
+};
 
 int main(){
-    int n;
-    printf("Enter number of students's details you want to enter: ");
-    scanf("%d", &n);
+    struct Date D;
+    struct employee emp;
+    printf("Enter the details of Employee: \n");
+    printf("Enter name:  ");
+    scanf("%s", emp.name);
+    printf("Enter ID:  ");
+    scanf("%d", &emp.id);
+    printf("Enter Date of Joining:  ");
+    scanf("%d %d %d", &emp.j_d.day, &emp.j_d.month, &emp.j_d.year);
     printf("\n");
-    struct students stu[n];
-    for(int i=0; i<n; i+=1){
-        printf("Enter details for student number %d:\n",i+1);
-        printf("Name:  ");
-        scanf("%s", stu[i].name);
-        printf("Roll:  ");
-        scanf("%d", &stu[i].roll);
-        printf("Marks:  ");
-        scanf("%f", &stu[i].marks);
-        printf("\n");
-    }
-    printf("\n");
-    struct students topper = top_student(stu, n);
-    printf("Top Student: %s | Roll: %d | Marks: %.2f\n", topper.name, topper.roll, topper.marks);
+    printf("The details of employees are: \n");
+    printf("NAME: %s | ID: %d | Joining_Date: %d-%d-%d", emp.name, emp.id, emp.j_d.day, emp.j_d.month, emp.j_d.year);
     return 0;
 }
